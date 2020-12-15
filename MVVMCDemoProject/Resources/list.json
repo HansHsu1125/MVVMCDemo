@@ -1,0 +1,12 @@
+{
+    "list" : [
+        {
+          "title": "MVVMC",
+          "content": "Here is sample project to demo how to use MVVMC."
+        },
+        {
+          "title": "Item - 1",
+          "content": "This is content for Item - 1"
+        }
+    ]
+}
