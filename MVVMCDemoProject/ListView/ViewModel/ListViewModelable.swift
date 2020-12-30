@@ -11,9 +11,9 @@ import Foundation
 protocol ListViewModelable {
     associatedtype DataType
     associatedtype ObserverType: Observerable
-    var dataChange:AnyObserver<ObserverType>? { get }
+    var dataChange: AnyObserver<ObserverType>? { get }
     func loadData()
-    func didSelect(info data:DataType)
+    func didSelect(info data: DataType)
 }
 
 extension ListViewModelable {

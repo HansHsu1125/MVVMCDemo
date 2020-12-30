@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Coordinator<T: UIViewController> : Coordinating {
+class Coordinator<T : UIViewController> : Coordinating {
     private(set) var started: Bool = false
     lazy var identifier: String = {
         return String(describing: self) + "_\(arc4random() % 1000)"
@@ -37,7 +37,7 @@ class Coordinator<T: UIViewController> : Coordinating {
         stopChildren()
     }
     
-    final func startChild( coordinator : Coordinating ) {
+    final func startChild(coordinator : Coordinating) {
         guard !childCoordinators.contains(where: {$0 === coordinator}) else {
             return
         }
@@ -46,7 +46,7 @@ class Coordinator<T: UIViewController> : Coordinating {
         coordinator.start()
     }
     
-    final func stopChild( coordinator: Coordinating) {
+    final func stopChild(coordinator: Coordinating) {
         coordinator.stop()
         if let index = childCoordinators.firstIndex(where: { $0 === coordinator }) {
             childCoordinators.remove(at: index)
@@ -60,7 +60,7 @@ class Coordinator<T: UIViewController> : Coordinating {
         childCoordinators.removeAll()
     }
     
-    func didReceiveDestoried( viewController: UIViewController) {
+    func didReceiveDestoried(viewController: UIViewController) {
         parent?.stopChild(coordinator: self)
     }
     
@@ -76,13 +76,13 @@ class Coordinator<T: UIViewController> : Coordinating {
         }
     }
     
-    final func present( viewController: UIViewController, animated: Bool = true, completion: (() -> Void)? = nil) {
+    final func present(viewController: UIViewController, animated: Bool = true, completion: (() -> Void)? = nil) {
         viewController.coordinator = self
         rootViewController.present(viewController, animated: animated, completion: completion)
     }
 }
 
-extension Coordinator where T: UINavigationController {
+extension Coordinator where T : UINavigationController {
     final func show( viewController: UIViewController, animated: Bool = true)  {
         viewController.coordinator = self
         rootViewController.pushViewController(viewController, animated: animated)

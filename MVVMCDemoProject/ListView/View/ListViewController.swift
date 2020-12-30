@@ -8,16 +8,16 @@
 
 import UIKit
 
-class ListViewController: UIViewController {
-    let lock:NSLock = .init()
-    let listViewTitle:String = "Notes"
-    let listViewModel:ContentListViewModel
-    let loadingView:UIActivityIndicatorView = .init(style: .large)
-    let tableView:UITableView = .init(frame: .zero, style: .plain)
-    let reuseIdentify:String = "ListCell"
-    var lists:[ContentModel]?
+class ListViewController : UIViewController {
+    let lock: NSLock = .init()
+    let listViewTitle: String = "Notes"
+    let listViewModel: ContentListViewModel
+    let loadingView: UIActivityIndicatorView = .init(style: .large)
+    let tableView: UITableView = .init(frame: .zero, style: .plain)
+    let reuseIdentify: String = "ListCell"
+    var lists: [ContentModel]?
     
-    init(viewModel:ContentListViewModel) {
+    init(viewModel: ContentListViewModel) {
         listViewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -108,14 +108,14 @@ extension ListViewController {
         listViewModel.outputs.loadData()
     }
     
-    func prcessData(datas:[ContentModel]?) {
+    func prcessData(datas: [ContentModel]?) {
         guard let listData = datas else { return }
         updateListData(datas: listData)
         stoptLoadingView()
         refreshListView()
     }
     
-    func updateListData(datas:[ContentModel]?) {
+    func updateListData(datas: [ContentModel]?) {
         defer { lock.unlock() }
         lock.lock()
         lists = datas

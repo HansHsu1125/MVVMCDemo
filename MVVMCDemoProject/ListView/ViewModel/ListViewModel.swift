@@ -13,12 +13,12 @@ internal let modelKeyNameOfCustomInfo = "model"
 final class ListViewModel : ListViewModelable {
     typealias DataType = ContentModel
     typealias ObserverType = Observer<[DataType]?>
-    private let dataSourcesManager:ListDataSourcesManager
-    private let coordinator:ListCoordinator
-    private var shouldPresentDetail:Observer<DataType?> = .init(nil)
+    private let dataSourcesManager: ListDataSourcesManager
+    private let coordinator: ListCoordinator
+    private var shouldPresentDetail: Observer<DataType?> = .init(nil)
     public private(set) var dataChange: AnyObserver<ObserverType>? = .init(Observer.init(nil))
 
-    init(dataSourcesManager:ListDataSourcesManager , coordinator:ListCoordinator) {
+    init(dataSourcesManager: ListDataSourcesManager , coordinator: ListCoordinator) {
         self.dataSourcesManager = dataSourcesManager
         self.coordinator = coordinator
         bindInputs()
@@ -45,7 +45,7 @@ extension ListViewModel {
         }
     }
     
-    func didSelect(info data:DataType) {
+    func didSelect(info data: DataType) {
         shouldPresentDetail.just(data)
     }
 }

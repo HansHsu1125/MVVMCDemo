@@ -8,15 +8,15 @@
 
 import Foundation
 
-class AnyObserver<T:Observerable> {
-    private let _observer:T
+class AnyObserver<T : Observerable> {
+    private let _observer: T
     
-    init(_ observer:T) {
+    init(_ observer: T) {
         _observer = observer
     }
 }
 
-extension AnyObserver: Observerable {
+extension AnyObserver : Observerable {
     typealias ValueType = T.ValueType
     var value: T.ValueType {
         return _observer.value

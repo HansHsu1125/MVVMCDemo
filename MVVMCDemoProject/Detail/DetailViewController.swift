@@ -9,12 +9,12 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-    let contentInfo:ContentModel
-    let scrollView:UIScrollView = .init()
-    let titleLabel:UILabel = .init()
-    let contentLabel:UILabel = .init()
+    let contentInfo: ContentModel
+    let scrollView: UIScrollView = .init()
+    let titleLabel: UILabel = .init()
+    let contentLabel: UILabel = .init()
     
-    init(contentInfo:ContentModel) {
+    init(contentInfo: ContentModel) {
         self.contentInfo = contentInfo
         super.init(nibName: nil, bundle: nil)
     }
@@ -73,7 +73,7 @@ private extension DetailViewController {
         contentLabel.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor , constant:  -10).isActive = true
     }
     
-    func updateContentInfo(info:ContentModel) {
+    func updateContentInfo(info: ContentModel) {
         titleLabel.text = info.title
         contentLabel.text = info.content
     }

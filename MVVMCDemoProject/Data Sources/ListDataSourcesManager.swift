@@ -14,24 +14,24 @@ enum LoadDataError : Error {
     case failedToDecodeData
 }
 
-class ListDataSourcesManager: DataSourcesManagerable {
+class ListDataSourcesManager : DataSourcesManagerable {
     typealias DataType = ContentModel
     
-    func loadData(_ completeHandler:@escaping (Result<[DataType]>) -> Void) {
+    func loadData(_ completeHandler: @escaping (Result<[DataType]>) -> Void) {
         loadLocalJsonFile(completeHandler)
     }
 }
 
 private extension ListDataSourcesManager {
-    func convertToContentModel(jsonData:Data) -> ListDataModel? {
+    func convertToContentModel(jsonData: Data) -> ListDataModel? {
            guard let lists = try? JSONDecoder().decode(ListDataModel.self, from: jsonData) else { return nil }
            return lists
        }
        
-       func loadLocalJsonFile(_ completeHandler:@escaping (Result<[DataType]>) -> ()) {
+       func loadLocalJsonFile(_ completeHandler: @escaping (Result<[DataType]>) -> ()) {
             DispatchQueue.global().async { [weak self] in
                 guard let self = self else { return }
-                guard let path = Bundle.main.path(forResource:"list", ofType:"json") else {
+                guard let path = Bundle.main.path(forResource: "list", ofType: "json") else {
                     completeHandler(.failed(LoadDataError.failedToFoundResources))
                     return
                 }

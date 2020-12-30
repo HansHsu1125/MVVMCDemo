@@ -9,5 +9,5 @@
 import Foundation
 
 protocol PresentCoordinatorable {
-    func presentViewController(customInfo:[String : Any]?)
+    func presentViewController(customInfo: [String : Any]?)
 }

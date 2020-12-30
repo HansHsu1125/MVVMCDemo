@@ -15,10 +15,10 @@ enum Result<T> {
 
 protocol DataSourcesManagerable {
     associatedtype DataType
-    func loadData(_ completeHandler:@escaping (Result<[DataType]>) -> ())
+    func loadData(_ completeHandler: @escaping (Result<[DataType]>) -> ())
 }
 
 extension DataSourcesManagerable {
-    var sync:Self { return self }
-    var async:Self { return self }
+    var sync: Self { return self }
+    var async: Self { return self }
 }

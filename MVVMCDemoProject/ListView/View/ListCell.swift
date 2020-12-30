@@ -9,8 +9,8 @@
 import UIKit
 
 class ListCell : UITableViewCell {
-    let titleLabel:UILabel = .init(frame: .zero)
-    let contentLabel:UILabel = .init(frame: .zero)
+    let titleLabel: UILabel = .init(frame: .zero)
+    let contentLabel: UILabel = .init(frame: .zero)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -71,7 +71,7 @@ private extension ListCell {
 
 //Public - api
 internal extension ListCell {
-    func configure(info:ContentModel) {
+    func configure(info: ContentModel) {
         titleLabel.text = info.title
         contentLabel.text = info.content
     }

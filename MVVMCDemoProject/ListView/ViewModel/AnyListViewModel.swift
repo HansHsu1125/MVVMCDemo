@@ -8,17 +8,17 @@
 
 import Foundation
 
-class AnyListViewModel<T,U:Observerable> {
+class AnyListViewModel<T, U : Observerable> {
     typealias DataType = T
     typealias ObserverType = U
     typealias AnyListModelCallBack = (([DataType]?) -> ())
-    public var dataChangeHandler:(AnyObserver<ObserverType>)?
-    public var loadDataHandler:(() -> ())?
-    public var didSelectHandler:((DataType) -> ())?
+    public var dataChangeHandler: (AnyObserver<ObserverType>)?
+    public var loadDataHandler: (() -> ())?
+    public var didSelectHandler: ((DataType) -> ())?
 }
 
 //ListViewModelable - api
-extension AnyListViewModel: ListViewModelable {
+extension AnyListViewModel : ListViewModelable {
     var dataChange: (AnyObserver<ObserverType>)? {
         get {
             return dataChangeHandler

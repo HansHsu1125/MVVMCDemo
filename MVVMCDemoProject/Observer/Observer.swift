@@ -9,15 +9,15 @@
 import Foundation
 
 class Observer<T> {
-    private var observers:[String: CompletionHandler] = .init()
-    private let lock:NSLock = .init()
-    public private(set) var value:ValueType {
+    private var observers: [String: CompletionHandler] = .init()
+    private let lock: NSLock = .init()
+    public private(set) var value: ValueType {
         didSet {
              notify()
         }
     }
     
-    init(_ value:ValueType) {
+    init(_ value: ValueType) {
         self.value = value
     }
     
@@ -32,7 +32,7 @@ class Observer<T> {
 }
 
 // Observerable
-extension Observer: Observerable {
+extension Observer : Observerable {
     public typealias ValueType = T
     
     func addObserver(_ observer: AnyObject, completionHandler: @escaping CompletionHandler) {

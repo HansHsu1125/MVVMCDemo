@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct ContentModel: Decodable {
-    let title : String
-    let content : String
+struct ContentModel : Decodable {
+    let title: String
+    let content: String
 }
 
-struct ListDataModel: Decodable {
-    let list : [ContentModel]
+struct ListDataModel : Decodable {
+    let list: [ContentModel]
 }

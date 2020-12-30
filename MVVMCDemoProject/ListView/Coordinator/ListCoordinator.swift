@@ -8,10 +8,10 @@
 
 import UIKit
 
-typealias ContentListViewModel = AnyListViewModel<ContentModel,Observer<[ContentModel]?>>
+typealias ContentListViewModel = AnyListViewModel<ContentModel, Observer<[ContentModel]?>>
 
 class ListCoordinator : Coordinator<UINavigationController> {
-    var viewController:UIViewController!
+    var viewController: UIViewController!
     
     override func start() {
         viewController = generateListViewController()
@@ -23,9 +23,10 @@ class ListCoordinator : Coordinator<UINavigationController> {
 //Private - api
 private extension ListCoordinator {
     func generateListViewModel() -> ContentListViewModel {
-        let listDataSourcesManager:ListDataSourcesManager = .init()
-        let listViewModel:ListViewModel = .init(dataSourcesManager: listDataSourcesManager , coordinator: self)
-        let anyListViewModel:ContentListViewModel = .init()
+        let listDataSourcesManager: ListDataSourcesManager = .init()
+        let listViewModel: ListViewModel = .init(dataSourcesManager: listDataSourcesManager , coordinator: self)
+       
+        let anyListViewModel: ContentListViewModel = .init()
         anyListViewModel.dataChangeHandler = listViewModel.dataChange
         anyListViewModel.loadDataHandler = listViewModel.loadData
         anyListViewModel.didSelectHandler = listViewModel.inputs.didSelect
@@ -41,8 +42,9 @@ private extension ListCoordinator {
 
 //PresentCoordinatorable - api
 extension ListCoordinator : PresentCoordinatorable {
-    func presentViewController(customInfo:[String : Any]? = nil) {
+    func presentViewController(customInfo: [String : Any]? = nil) {
         guard let info = customInfo?[modelKeyNameOfCustomInfo] as? ContentModel else { return }
+        
         let detailViewController:DetailViewController = .init(contentInfo: info)
         present(viewController: detailViewController)
     }
